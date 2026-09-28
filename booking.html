@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book an Appointment — Potential Hair Trader</title>
+<meta name="description" content="Book your wig installation, customisation, treatment, revamp or custom wig making appointment with Potential Hair Trader." />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/images/icon-192.png" />
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+<meta name="theme-color" content="#f7efe8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/images/logo.png" alt="Potential Hair Trader logo" />
+      <span class="brand-text">Potential Hair Trader<small>WIGS &amp; HAIR STUDIO · EST. 2020</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="booking.html" class="active">Booking</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="admin.html" class="btn btn-outline">Salon login</a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="breadcrumb">Home / Booking</span>
+    <span class="eyebrow">Reserve your appointment</span>
+    <h1>Book your slot</h1>
+    <p style="font-size:1.05rem; max-width:640px;">Choose your service and pick an open slot. Times already booked or unavailable are shown crossed out, so you only see what is genuinely free. Your slot is held as <strong>pending</strong> until Promise confirms it — just like accepting a calendar invite.</p>
+  </div>
+</div>
+
+<div id="connectionBanner" class="container" style="display:none; margin-top:24px;">
+  <div class="form-msg show info">
+    Online booking is being connected right now. In the meantime, please WhatsApp us on 061 949 9625 to book.
+  </div>
+</div>
+
+<div id="confirmation" class="container" style="display:none; padding-top:50px; padding-bottom:50px;"></div>
+
+<section id="bookingArea" style="padding-top:50px;">
+  <div class="container booking-grid">
+
+    <aside class="booking-panel">
+      <h3>Your details</h3>
+      <p style="font-size:0.9rem;">Fill this in alongside your slot selection.</p>
+
+      <form id="bookingForm">
+        <div class="field">
+          <label for="categorySelect">Service</label>
+          <select id="categorySelect" required></select>
+        </div>
+        <div class="field">
+          <label for="subtypeSelect">Specific option</label>
+          <select id="subtypeSelect" required disabled></select>
+        </div>
+        <div class="field">
+          <label for="clientName">Full name</label>
+          <input id="clientName" type="text" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="clientPhone">Phone number</label>
+          <input id="clientPhone" type="tel" placeholder="073 000 0000" required />
+        </div>
+        <div class="field">
+          <label for="clientEmail">Email</label>
+          <input id="clientEmail" type="email" placeholder="you@email.com" required />
+          <small class="hint">Your booking confirmation is sent here.</small>
+        </div>
+        <div class="field">
+          <label for="clientNotes">Notes for Promise</label>
+          <textarea id="clientNotes" placeholder="Hair length, colour, occasion date, anything she should know…"></textarea>
+        </div>
+
+        <div class="summary-box">
+          <div><span>Service</span><span id="sumService">—</span></div>
+          <div><span>Option</span><span id="sumOption">—</span></div>
+          <div><span>Date</span><span id="sumDate">—</span></div>
+          <div><span>Time</span><span id="sumTime">—</span></div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:20px;" disabled>Request this slot</button>
+        <div id="formMsg" class="form-msg"></div>
+      </form>
+
+      <div style="margin-top:30px; padding-top:24px; border-top:1px solid var(--line); font-size:0.88rem; color:var(--ink-soft);">
+        <strong style="color:var(--ink);">Prefer to book directly?</strong><br />
+        <a href="https://wa.me/27619499625" target="_blank" rel="noopener">WhatsApp — 061 949 9625</a><br />
+        <a href="mailto:hairtraderpotential@gmail.com">hairtraderpotential@gmail.com</a><br />
+        <a href="https://instagram.com/potentialhairtrader" target="_blank" rel="noopener">@potentialhairtrader</a>
+      </div>
+    </aside>
+
+    <div>
+      <div class="calendar-head">
+        <div>
+          <h3 style="margin-bottom:2px;">Pick a date</h3>
+          <p style="margin:0; font-size:0.88rem;">Open Tuesday – Saturday</p>
+        </div>
+        <div class="calendar-nav">
+          <button type="button" class="icon-btn" id="prevWeek" aria-label="Previous week">&larr;</button>
+          <button type="button" class="icon-btn" id="nextWeek" aria-label="Next week">&rarr;</button>
+        </div>
+      </div>
+
+      <div class="day-strip" id="dayStrip"></div>
+
+      <h3 id="selectedDateLabel" style="margin-bottom:16px;">Select a date above</h3>
+      <div class="slot-grid" id="slotGrid">
+        <p style="grid-column:1/-1; color:var(--ink-soft);">Choose a date to see available times.</p>
+      </div>
+
+      <div class="legend">
+        <span><i class="free"></i> Open</span>
+        <span><i class="chosen"></i> Your selection</span>
+        <span><i class="wait"></i> Pending confirmation</span>
+        <span><i class="busy"></i> Booked / unavailable</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/images/logo.png" alt="Potential Hair Trader logo" />
+          <span style="font-family:var(--font-display); font-size:1.15rem; color:#f4ece5;">Potential Hair Trader</span>
+        </div>
+        <p>Wig installation, customisation, treatment, revamps and custom wig making — founded by Promise Mncube in 2020.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <p><a href="services.html">Services</a></p>
+        <p><a href="about.html">About Promise</a></p>
+        <p><a href="booking.html">Book an appointment</a></p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="https://wa.me/27619499625" target="_blank" rel="noopener">WhatsApp / Call — 061 949 9625</a></p>
+        <p><a href="mailto:hairtraderpotential@gmail.com">hairtraderpotential@gmail.com</a></p>
+        <p><a href="https://instagram.com/potentialhairtrader" target="_blank" rel="noopener">@potentialhairtrader</a></p>
+        <p>Mpumalanga · Piet Retief</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Potential Hair Trader. All rights reserved.</span>
+      <span>Est. 2020</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/services-data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/email-config.js"></script>
+<script src="js/config.js"></script>
+<script src="js/confirmation.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>
