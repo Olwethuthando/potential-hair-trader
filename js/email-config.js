@@ -14,14 +14,12 @@
    Paste the three values below.
    ========================================================================== */
 const EMAILJS_CONFIG = {
-    serviceId: "service_dyj7o3d",
+    serviceId: "service_3f3987i",
     templateId: "template_a3cbd8c",
-    publicKey: "2GCuUv4sdbDVbooT7"
-
-
+    publicKey: "2GCuUv4sdbDVbooT7",
 
   // Where the "new booking request" alert is sent. While testing, put YOUR email
   // here so you receive it. Before going live, change it back to Promise's:
   // hairtraderpotential@gmail.com
-  notifyEmail: "olwethuthando63@gmail.com"
+  notifyEmail: "hairtraderpotential@gmail.com"
 };
