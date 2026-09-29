@@ -599,3 +599,10 @@ section { padding: 100px 0; }
 @media (max-width: 720px) {
   .service-media.wide { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* The header button (Book a slot / Salon login) also needs to appear inside
+   the mobile dropdown menu, since it's hidden on small screens. */
+.nav-extra { display: none; }
+@media (max-width: 720px) {
+  .site-header.open .nav-links .nav-extra { display: block; }
+}
