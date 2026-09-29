@@ -132,7 +132,7 @@ function renderDayStrip() {
     if (closed) label = "Closed";
     else if (isPast) label = "";
     else if (firebaseReady && state.avail[dateStr]) {
-      const open = SLOT_TIMES.filter((t) => slotState(dateStr, t) === "free").length;
+      const open = slotsForWeekday(d.getDay()).filter((t) => slotState(dateStr, t) === "free").length;
       label = open === 0 ? "Full" : `${open} open`;
     }
 
@@ -180,7 +180,8 @@ function renderSlotGrid() {
     return;
   }
 
-  SLOT_TIMES.forEach((time) => {
+  const dayOfWeek = new Date(state.selectedDate + "T00:00:00").getDay();
+  slotsForWeekday(dayOfWeek).forEach((time) => {
     const st = slotState(state.selectedDate, time);
     const div = document.createElement("div");
     const selected = state.selectedTime === time && st === "free";
