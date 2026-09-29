@@ -23,4 +23,3 @@ const EMAILJS_CONFIG = {
   // hairtraderpotential@gmail.com
   notifyEmail: "hairtraderpotential@gmail.com"
 };
-
