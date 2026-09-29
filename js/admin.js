@@ -218,6 +218,28 @@ async function loadBlocks() {
   });
 }
 
+function populateBlockTimeOptions() {
+  const dateVal = document.getElementById("blockDate").value;
+  const sel = document.getElementById("blockTime");
+  sel.innerHTML = '<option value="ALL">All day</option>';
+  if (!dateVal) return;
+  const dow = new Date(dateVal + "T00:00:00").getDay();
+  slotsForWeekday(dow).forEach((t) => {
+    const o = document.createElement("option");
+    o.value = t;
+    o.textContent = fmtTime(t);
+    sel.appendChild(o);
+  });
+  if (slotsForWeekday(dow).length === 0) {
+    const o = document.createElement("option");
+    o.value = "ALL";
+    o.textContent = "Closed that day — nothing to block";
+    sel.innerHTML = "";
+    sel.appendChild(o);
+  }
+}
+document.getElementById("blockDate").addEventListener("change", populateBlockTimeOptions);
+
 document.getElementById("blockForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const date = document.getElementById("blockDate").value;
@@ -225,7 +247,8 @@ document.getElementById("blockForm").addEventListener("submit", async (e) => {
   const reason = document.getElementById("blockReason").value.trim();
   if (!date) return;
 
-  const times = time === "ALL" ? SLOT_TIMES : [time];
+  const dow = new Date(date + "T00:00:00").getDay();
+  const times = time === "ALL" ? slotsForWeekday(dow) : [time];
   const slotIds = [];
   const skipped = [];
   for (const t of times) {
