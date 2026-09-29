@@ -83,7 +83,12 @@ doesn't allow sign-in from a file on your computer), so test those there.
 ## Editing things
 
 - `js/services-data.js` — service names and options (updates the whole site).
-- `js/config.js` — open days and appointment times.
+- `js/config.js` — opening days and hours. Currently:
+  - Monday – Thursday: 17:00 – 23:00 (hourly)
+  - Friday: 14:30 – 22:30 (hourly)
+  - Saturday: 05:00 – 19:00 (hourly)
+  - Sunday: closed
+  To change these, edit the `MON_THU`, `FRI` and `SAT` lines near the top of the file.
 - `js/confirmation.js` — the booking rules and banking details shown in confirmations.
 - `assets/images/` — all photos and the logo.
 - Browser-tab icon: `favicon.ico` (top level) plus `assets/images/favicon-*.png`, `icon-*.png` and `apple-touch-icon.png`, all made from the logo. To change the icon, replace those files.
