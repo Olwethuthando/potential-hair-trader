@@ -592,3 +592,10 @@ section { padding: 100px 0; }
   .site-header, .site-footer, .page-hero, .confirm-actions, #connectionBanner { display:none !important; }
   body { background:#fff; }
 }
+
+/* Wider media grid for sections with more photos (e.g. Installation on services.html) */
+.service-media.wide { grid-template-columns: repeat(3, 1fr); }
+.service-media.wide img { height: 200px; }
+@media (max-width: 720px) {
+  .service-media.wide { grid-template-columns: repeat(2, 1fr); }
+}
